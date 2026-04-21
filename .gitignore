@@ -1,0 +1,18 @@
+# Backend
+backend/.env
+backend/vendor/
+backend/node_modules/
+backend/storage/logs/*.log
+backend/.phpunit.result.cache
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Docker volumes
+.docker/
+
+# IDE
+.idea/
+.vscode/
+*.swp
