@@ -9,7 +9,7 @@
 
 ```bash
 # 1. Sklonuj repozytorium
-git clone <repo-url>
+git clone https://github.com/slk500/lab-zadanie
 cd zadanie
 
 # 2. Uruchom wszystkie kontenery
