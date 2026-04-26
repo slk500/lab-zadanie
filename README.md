@@ -14,17 +14,19 @@ cd zadanie
 
 # 2. Uruchom wszystkie kontenery
 docker compose up -d --build
+```
 
-# 3. Poczekaj aż baza danych będzie gotowa (~15 s)
-#    Migracje i seed uruchamiają się automatycznie przy starcie backendu
+Migracje i seed uruchamiają się automatycznie przy starcie backendu (~15 s). Aby zresetować dane:
 
+```bash
+rm backend/storage/app/.seeded
+docker compose restart backend
+```
 
-# 5. Otwórz przeglądarkę
-=======
-# 4. Otwórz przeglądarkę
->>>>>>> 1656c5a (feat: auto-seed database on first container start)
-#    Frontend: http://localhost:3000
-#    Backend API: http://localhost:8080/api
+Po uruchomieniu otwórz przeglądarkę:
+```
+Frontend:    http://localhost:3000
+Backend API: http://localhost:8080/api
 ```
 
 ### Dane testowe (po imporcie CSV)
