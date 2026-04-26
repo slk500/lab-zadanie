@@ -64,18 +64,18 @@ Zaimplementuj polecenie konsolowe w Laravel, które wczyta dane pacjentów i wyn
 | patientId | patientName | patientSurname | patientSex | patientBirthDate | orderId | testName | testValue | testReference |
 |-----------|-------------|----------------|------------|------------------|---------|----------|-----------|---------------|
 
-- Importowane dane mają zostać zapisane w bazie danych (tabele pacjentów, zamówień i wyników badań).
+- [x] Importowane dane mają zostać zapisane w bazie danych (tabele pacjentów, zamówień i wyników badań).
 - **Wymagania techniczne:**
-    - Obsługa błędów w przypadku niekompletnego lub wadliwego pliku CSV.
-    - Logowanie poprawnie zaimportowanych rekordów oraz błędów do pliku.
+    - [x] Obsługa błędów w przypadku niekompletnego lub wadliwego pliku CSV.
+    - [x] Logowanie poprawnie zaimportowanych rekordów oraz błędów do pliku.
 
 ---
 
 ### 2. Stworzenie API
 
 - **Endpointy:**
-    - `POST /api/login` – logowanie użytkownika na podstawie loginu (połączenie imienia i nazwiska pacjenta, np. `PiotrKowalski`) i hasła (data urodzenia pacjenta, np. `1983-04-12`). Zwraca token JWT.
-    - `GET /api/results` – zwraca dane zalogowanego pacjenta oraz wyniki jego badań na podstawie tokenu JWT.
+    - [x] `POST /api/login` – logowanie użytkownika na podstawie loginu (połączenie imienia i nazwiska pacjenta, np. `PiotrKowalski`) i hasła (data urodzenia pacjenta, np. `1983-04-12`). Zwraca token JWT.
+    - [x] `GET /api/results` – zwraca dane zalogowanego pacjenta oraz wyniki jego badań na podstawie tokenu JWT.
       Endpoint powinien zwrócić dane w następującej postaci:
 ```json
 {
@@ -121,8 +121,8 @@ Zaimplementuj polecenie konsolowe w Laravel, które wczyta dane pacjentów i wyn
 }
 ```
 - **Dodatkowe wymagania:**
-    - Autoryzacja za pomocą tokenu JWT.
-    - Obsługa błędów (401 dla nieautoryzowanych żądań, 404 dla braku danych).
+    - [x] Autoryzacja za pomocą tokenu JWT.
+    - [x] Obsługa błędów (401 dla nieautoryzowanych żądań, 404 dla braku danych).
 
 ---
 
@@ -130,39 +130,39 @@ Zaimplementuj polecenie konsolowe w Laravel, które wczyta dane pacjentów i wyn
 
 - **Funkcjonalności:**
     - **Logowanie użytkownika:**
-        - Formularz logowania (login: imię + nazwisko pacjenta, hasło: data urodzenia).
-        - Po pomyślnym zalogowaniu, użytkownik zostaje przekierowany do widoku z wynikami badań.
+        - [x] Formularz logowania (login: imię + nazwisko pacjenta, hasło: data urodzenia).
+        - [x] Po pomyślnym zalogowaniu, użytkownik zostaje przekierowany do widoku z wynikami badań.
     - **Podgląd danych pacjenta i wyników badań:**
-        - Wyświetlanie szczegółowych informacji o pacjencie.
-        - Lista wyników badań (nazwa badania, wartość, wartość referencyjna).
+        - [x] Wyświetlanie szczegółowych informacji o pacjencie.
+        - [x] Lista wyników badań (nazwa badania, wartość, wartość referencyjna).
 
 - **Wymagania techniczne:**
-    - Przechowywanie tokenu JWT w LocalStorage.
-    - Automatyczne wylogowanie po wygaśnięciu tokenu (nice to have).
+    - [x] Przechowywanie tokenu JWT w LocalStorage.
+    - [x] Automatyczne wylogowanie po wygaśnięciu tokenu (nice to have).
 
 ---
 
 ### 4. Baza Danych
 
 - Przygotuj schemat bazy danych (PostgreSQL lub MySQL), który obsłuży:
-    - Pacjentów.
-    - Zamówienia (orderId) i wyniki badań.
-- Zaimplementuj migracje w Laravel.
+    - [x] Pacjentów.
+    - [x] Zamówienia (orderId) i wyniki badań.
+- [x] Zaimplementuj migracje w Laravel.
 
 ---
 
 ### 5. CI/CD
 
 - Przygotuj plik konfiguracyjny dla GitLab CI/CD, który:
-    - Uruchamia testy jednostkowe i integracyjne dla API.
-    - Buduje aplikację frontendową (nice to have).
-    - Buduje i wypycha obraz Docker (nice to have).
+    - [x] Uruchamia testy jednostkowe i integracyjne dla API.
+    - [x] Buduje aplikację frontendową (nice to have).
+    - [x] Buduje i wypycha obraz Docker (nice to have).
 
 ---
 
 ### 6. Docker
 
-- Opracuj plik `docker-compose.yml`, który umożliwi lokalne uruchomienie aplikacji z backendem, frontendem i bazą danych.
+- [x] Opracuj plik `docker-compose.yml`, który umożliwi lokalne uruchomienie aplikacji z backendem, frontendem i bazą danych.
 
 ---
 
