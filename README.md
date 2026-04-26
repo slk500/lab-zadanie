@@ -10,7 +10,7 @@
 ```bash
 # 1. Sklonuj repozytorium
 git clone https://github.com/slk500/lab-zadanie
-cd zadanie
+cd lab-zadanie
 
 # 2. Uruchom wszystkie kontenery
 docker compose up -d --build
@@ -25,8 +25,9 @@ docker compose restart backend
 
 Po uruchomieniu otwórz przeglądarkę:
 ```
-Frontend:    http://localhost:3000
-Backend API: http://localhost:8080/api
+Frontend:              http://localhost:3000
+Backend API (login):   http://localhost:8080/api/login
+Backend API (results): http://localhost:8080/api/results
 ```
 
 ### Dane testowe (po imporcie CSV)
