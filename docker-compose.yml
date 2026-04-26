@@ -12,6 +12,7 @@ services:
       - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "laravel", "-psecret"]
       interval: 10s
@@ -29,15 +30,6 @@ services:
       - ./backend:/var/www/html
       - ./results.csv:/var/www/html/results.csv
       - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-    environment:
-      DB_CONNECTION: mysql
-      DB_HOST: db
-      DB_PORT: 3306
-      DB_DATABASE: laravel
-      DB_USERNAME: laravel
-      DB_PASSWORD: secret
-      CACHE_STORE: array
-      SESSION_DRIVER: array
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
