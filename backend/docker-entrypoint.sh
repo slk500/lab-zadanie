@@ -10,4 +10,10 @@ until php artisan migrate --force 2>&1; do
   sleep 3
 done
 
+# Seed only on first run
+if [ ! -f storage/app/.seeded ]; then
+  echo "Seeding database…"
+  php artisan db:seed --force && touch storage/app/.seeded
+fi
+
 exec "$@"

@@ -15,10 +15,14 @@ cd zadanie
 # 2. Uruchom wszystkie kontenery
 docker compose up -d --build
 
-# 3. Poczekaj aż baza danych będzie gotowa (~15 s), następnie uruchom migracje i seedery
-docker compose exec backend php artisan migrate:fresh --seed
+# 3. Poczekaj aż baza danych będzie gotowa (~15 s)
+#    Migracje i seed uruchamiają się automatycznie przy starcie backendu
+
 
 # 5. Otwórz przeglądarkę
+=======
+# 4. Otwórz przeglądarkę
+>>>>>>> 1656c5a (feat: auto-seed database on first container start)
 #    Frontend: http://localhost:3000
 #    Backend API: http://localhost:8080/api
 ```
