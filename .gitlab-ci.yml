@@ -16,10 +16,8 @@ backend:test:
     - name: mysql:8.0
       alias: mysql
       variables:
-        MYSQL_ROOT_PASSWORD: rootsecret
+        MYSQL_ROOT_PASSWORD: secret
         MYSQL_DATABASE: testing
-        MYSQL_USER: root
-        MYSQL_PASSWORD: secret
   before_script:
     - apt-get update -qq && apt-get install -y -qq default-mysql-client unzip git zip libzip-dev libonig-dev
     - docker-php-ext-install pdo pdo_mysql mbstring bcmath zip
@@ -48,8 +46,7 @@ backend:test:
     - php artisan key:generate
   script:
     - php artisan migrate --force
-    - php artisan test --no-interaction
-  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+    - php -d xdebug.mode=off vendor/bin/phpunit --log-junit storage/test-results.xml
   artifacts:
     reports:
       junit: backend/storage/test-results.xml
