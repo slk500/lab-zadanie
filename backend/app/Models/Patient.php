@@ -31,6 +31,11 @@ class Patient extends Authenticatable implements JWTSubject
         return $this->hasMany(Order::class);
     }
 
+    public static function findByFullName(string $fullName): ?static
+    {
+        return static::whereRaw("CONCAT(name, surname) = ?", [$fullName])->first();
+    }
+
     public function getAuthPassword(): string
     {
         return $this->birth_date;

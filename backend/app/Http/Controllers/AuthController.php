@@ -5,16 +5,13 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
-use App\Repositories\TokenRepository;
 use App\Services\AuthService;
 use Illuminate\Http\JsonResponse;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController
 {
-    public function __construct(
-        private readonly AuthService $auth,
-        private readonly TokenRepository $tokens,
-    ) {}
+    public function __construct(private readonly AuthService $auth) {}
 
     public function login(LoginRequest $request): JsonResponse
     {
@@ -24,6 +21,6 @@ class AuthController
             return response()->json(['message' => 'Błędne dane logowania.'], 401);
         }
 
-        return response()->json(['token' => $this->tokens->generateFor($patient)]);
+        return response()->json(['token' => JWTAuth::fromUser($patient)]);
     }
 }
