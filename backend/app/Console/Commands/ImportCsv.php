@@ -25,6 +25,11 @@ class ImportCsv extends Command
         'patientBirthDate', 'orderId', 'testName', 'testValue', 'testReference',
     ];
 
+    private const array NON_EMPTY_COLUMNS = [
+        'patientId', 'patientName', 'patientSurname', 'patientSex',
+        'patientBirthDate', 'orderId', 'testName', 'testValue',
+    ];
+
     public function __construct(
         private readonly ConnectionInterface $db,
         private readonly LoggerInterface $logger,
@@ -142,7 +147,7 @@ class ImportCsv extends Command
     {
         $errors = [];
 
-        foreach (self::REQUIRED_COLUMNS as $col) {
+        foreach (self::NON_EMPTY_COLUMNS as $col) {
             if (empty($row[$col])) {
                 $errors[] = "missing {$col}";
             }
