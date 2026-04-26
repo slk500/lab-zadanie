@@ -1,6 +1,12 @@
 #!/bin/sh
 set -e
 
+if [ ! -f .env ]; then
+  cp .env.example .env
+  php artisan key:generate --force
+  php artisan jwt:secret --force
+fi
+
 chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Wait for DB to be ready
