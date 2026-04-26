@@ -4,29 +4,23 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PatientResultsResource;
 use App\Models\Patient;
-use App\Repositories\PatientRepository;
-use App\Normalizers\PatientResultsNormalizer;
 use Illuminate\Http\JsonResponse;
 
 class ResultsController
 {
-    public function __construct(
-        private readonly PatientRepository $patients,
-        private readonly PatientResultsNormalizer $normalizer,
-    ) {}
-
-    public function index(): JsonResponse
+    public function list(): JsonResponse|PatientResultsResource
     {
         /** @var Patient $patient */
         $patient = auth()->user();
 
-        $orders = $this->patients->getOrdersWithResults($patient);
+        $patient->load(['orders.testResults']);
 
-        if ($orders->isEmpty()) {
+        if ($patient->orders->isEmpty()) {
             return response()->json(['message' => 'No results found'], 404);
         }
 
-        return response()->json($this->normalizer->normalize($patient, $orders));
+        return new PatientResultsResource($patient);
     }
 }
