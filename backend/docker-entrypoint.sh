@@ -9,6 +9,9 @@ fi
 
 chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
+# Regenerate package cache based on installed (non-dev) dependencies
+php artisan package:discover --ansi
+
 # Wait for DB to be ready
 echo "Waiting for database…"
 until php artisan migrate --force 2>&1; do
