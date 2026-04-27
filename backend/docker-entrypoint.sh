@@ -16,10 +16,11 @@ until php artisan migrate --force 2>&1; do
   sleep 3
 done
 
-# Seed only on first run
-if [ ! -f storage/app/.seeded ]; then
+# Seed if database is empty
+ROW_COUNT=$(php artisan tinker --no-interaction --execute="echo \App\Models\Patient::count();" 2>/dev/null | tr -d '[:space:]')
+if [ "$ROW_COUNT" = "0" ]; then
   echo "Seeding database…"
-  php artisan db:seed --force && touch storage/app/.seeded
+  php artisan db:seed --force
 fi
 
 exec "$@"
